@@ -26,9 +26,9 @@ h3, p {
   background-color: rgba(255, 255, 255, 0.92);
   opacity: 75%;
   padding: 1.5rem;
-  width: 50%;
+  width: 60%;
   border-radius: 0.8rem;
-  max-width: 600px;
+  /* max-width: 600px; */
 }
 
 input {
@@ -87,4 +87,20 @@ button:disabled {
 
 .enter span {
  color: #386299; 
+}
+
+@media screen and (max-width: 787px) {
+  .box {
+    width: 80%;
+    height: 65%;
+  }
+
+  .input-box {
+    margin-top: 0.99rem;
+  }
+
+  .errorMessage {
+    font-size: 0.8rem;
+  }
+  
 }
