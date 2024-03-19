@@ -3,6 +3,9 @@ import './signup.css'
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { FaRegCircleUser } from "react-icons/fa6";
+import { MdOutlineMail } from "react-icons/md";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 const schema = z
   .object({
@@ -41,7 +44,7 @@ const SignUp = () => {
       <h3>Welcome!</h3>
       <p>kindly create your account</p>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className="input-box">
         <input
           name="fullName"
           id="fullName"
@@ -51,40 +54,44 @@ const SignUp = () => {
         />
         {errors.fullName && <div className="errorMessage"> {errors.fullName?.message} </div>}
         </div>
-        <div>
+        <div className="input-box">
         <input
           id="userName"
           {...register("userName")}
           type="text"
           placeholder="Username"
-        />      
+        />
+        <FaRegCircleUser className="icons"/>
         {errors.userName && <div className="errorMessage"> {errors.fullName?.message} </div>}
         </div>
-        <div>
+        <div className="input-box">
         <input
           id="email"
           {...register("email")}
           type="email"
           placeholder="Email Address"
         />
+        <MdOutlineMail className="icons"/>
         {errors.email && <div className="errorMessage"> {errors.email?.message} </div>}
         </div>
-        <div>
+        <div className="input-box">
         <input
           id="password"
           {...register("password")}
           type="password"
           placeholder="Password"
         />
+        <FaRegEyeSlash className="icons" />
         {errors.password && <div className="errorMessage"> {errors.password?.message} </div>}
         </div>
-        <div>
+        <div className="input-box">
         <input
           id="c_password"
           {...register("confirmPassword")}
           type="password"
           placeholder="Confirm Password"
         />
+        <FaRegEyeSlash className="icons" />
         {errors.confirmPassword && <div className="errorMessage"> {errors.confirmPassword?.message} </div>}
         </div>
         
