@@ -58,12 +58,10 @@ input {
   color: red;
   font-style: italic;
   font-size: 0.9rem;
-  font-weight: 500;
-  /* margin-top: 0rem;  */
+  font-weight: 800;
   position: absolute;
-  /* top: 43px; */
-  top: 2.6
-  rem;
+  left: 0.8rem;
+  top: 2.6rem;
 }
 
 button {
