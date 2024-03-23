@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import "./login.css";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { LiaEyeSolid } from "react-icons/lia";
+import { Link } from "react-router-dom";
 
 
 const schema = z
@@ -54,7 +55,7 @@ const Login = () => {
               className="input-check"
             />
           </div>
-          <div>
+          <div className="login-input">
             <input name="password" 
               {...register("password")}
               id="password" 
@@ -75,7 +76,7 @@ const Login = () => {
                   />
                 <label htmlFor="remember">Remember Me</label>
               </div>
-                <a href="/signup">Forget Password</a>
+                <Link to="/forgetPassword">Forget Password?</Link>
             </div>
             <button className="btn-sec" type="submit">Sign In</button>
           </div>
