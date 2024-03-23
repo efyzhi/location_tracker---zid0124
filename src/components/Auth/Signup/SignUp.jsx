@@ -51,6 +51,7 @@ const SignUp = () => {
           {...register("fullName")}
           type="text"
           placeholder="Full name"
+          className="input"
         />
         {errors.fullName && <div className="errorMessage"> {errors.fullName?.message} </div>}
         </div>
@@ -60,6 +61,7 @@ const SignUp = () => {
           {...register("userName")}
           type="text"
           placeholder="Username"
+          className="input"
         />
         <FaRegCircleUser className="icons"/>
         {errors.userName && <div className="errorMessage"> {errors.fullName?.message} </div>}
@@ -70,6 +72,7 @@ const SignUp = () => {
           {...register("email")}
           type="email"
           placeholder="Email Address"
+          className="input"
         />
         <MdOutlineMail className="icons"/>
         {errors.email && <div className="errorMessage"> {errors.email?.message} </div>}
@@ -80,6 +83,7 @@ const SignUp = () => {
           {...register("password")}
           type="password"
           placeholder="Password"
+          className="input"
         />
         <FaRegEyeSlash className="icons" />
         {errors.password && <div className="errorMessage"> {errors.password?.message} </div>}
@@ -90,6 +94,7 @@ const SignUp = () => {
           {...register("confirmPassword")}
           type="password"
           placeholder="Confirm Password"
+          className="input"
         />
         <FaRegEyeSlash className="icons" />
         {errors.confirmPassword && <div className="errorMessage"> {errors.confirmPassword?.message} </div>}
@@ -108,5 +113,5 @@ const SignUp = () => {
   );
 };
 
-// do throw error
+
 export default SignUp;
