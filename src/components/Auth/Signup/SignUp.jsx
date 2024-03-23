@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import './signup.css'
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FaRegCircleUser } from "react-icons/fa6";
+import { LiaEyeSolid } from "react-icons/lia";
 import { MdOutlineMail } from "react-icons/md";
 import { FaRegEyeSlash } from "react-icons/fa";
 
@@ -24,6 +25,13 @@ const schema = z
   });
 
 const SignUp = () => {
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+
+  const handlePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible)
+  }
+
   const {
     register,
     handleSubmit,
@@ -81,26 +89,30 @@ const SignUp = () => {
         <input
           id="password"
           {...register("password")}
-          type="password"
+          type={isPasswordVisible ? 'text' : 'password'}
           placeholder="Password"
           className="input"
         />
-        <FaRegEyeSlash className="icons" />
+        <button type="button" onClick={handlePasswordVisibility}>
+              {isPasswordVisible ? <LiaEyeSolid className="icons pass"/> : <FaRegEyeSlash className="icons pass" />}
+              </button>
         {errors.password && <div className="errorMessage"> {errors.password?.message} </div>}
         </div>
         <div className="input-box">
         <input
           id="c_password"
           {...register("confirmPassword")}
-          type="password"
+          type={isPasswordVisible ? 'text' : 'password'}
           placeholder="Confirm Password"
           className="input"
         />
-        <FaRegEyeSlash className="icons" />
+        <button type="button" onClick={handlePasswordVisibility}>
+              {isPasswordVisible ? <LiaEyeSolid className="icons pass"/> : <FaRegEyeSlash className="icons pass" />}
+              </button>
         {errors.confirmPassword && <div className="errorMessage"> {errors.confirmPassword?.message} </div>}
         </div>
         
-        <button disabled={isSubmitting} type="submit">
+        <button className="btn" disabled={isSubmitting} type="submit">
           {" "}
           {isSubmitting ? "Loading..." : "Sign Up"}{" "}
         </button>
