@@ -1,0 +1,9 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.leaflet-container {
+  width: 50vw;
+  height: 50vh;
+}

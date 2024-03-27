@@ -39,16 +39,28 @@
   /* padding: 0.8rem; */
 }
 
-
-
-.btn-verify {
-  padding: 0rem 0.8rem;
-  border-radius: 2rem;
-  border: 1px solid #7c7c7c;
-}
-
 a {
   text-decoration: none;
+}
+
+.lines {
+  display: flex;
+  justify-content: space-between;
+  margin: 1.5rem 0;  
+}
+
+.line input {
+  width: 60%;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  background-image: inherit;
+}
+
+.line input::-webkit-outer-spin-button,
+.line input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .btn-verify {

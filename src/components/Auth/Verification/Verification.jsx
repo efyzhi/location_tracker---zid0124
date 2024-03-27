@@ -22,10 +22,12 @@ const Verification = () => {
       </div>        
         <p className='verify-text'>Kindly enter your registered email address to receive  verificstion code</p>
         <div className='lines'>            
-        <div className='line'></div>
-        <div className='line'></div>
-        <div className='line'></div>
-        <div className='line'></div>
+        <div className='line'>
+          <input type='number'/>
+        </div>
+        <div className='line'><input type='number'/></div>
+        <div className='line'><input type='number'/></div>
+        <div className='line'><input type='number'/></div>
         </div>
           <p>Didn't receive any code yet? <span>Resend</span></p>
        
