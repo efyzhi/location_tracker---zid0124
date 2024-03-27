@@ -4,7 +4,7 @@ import './map.css'
 
 const Map = () => {
  const mapContainer = useRef(null);
- const [marker, setMarker] = useState(null); // State to hold the marker
+ const [marker, setMarker] = useState(null);
 
  useEffect(() => {
     mapboxgl.accessToken = "pk.eyJ1IjoiZWZ5emhpIiwiYSI6ImNsdTlpenE0aDA4d3oya3F4c29mY2xnN28ifQ.O0g7UZjJZG_PA6q_hAmp_Q";
@@ -24,12 +24,12 @@ const Map = () => {
 
         map.setCenter([longitude, latitude]);
 
-        // Remove the old marker if it exists
+        
         if (marker) {
           marker.remove();
         }
 
-        // Create a marker on the user's exact location
+        
         const markerElement = document.createElement('div');
         markerElement.className = 'custom-marker';
         
@@ -37,7 +37,7 @@ const Map = () => {
           .setLngLat([longitude, latitude])
           .addTo(map);
 
-        // Update the marker state
+        
         setMarker(newMarker);
       }, (error) => {
         console.error('Cannot get user location', error);
