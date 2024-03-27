@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import 'mapbox-gl/dist/mapbox-gl.css';
 import "./dashboard.css";
 
 import Map from "./Map";
