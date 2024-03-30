@@ -17,7 +17,7 @@ try {
         return res.status(401).json({ error: "Invalid token"})
     }
     console.log(decoded.userID)
-    const user = await checkRecordsExists("users", "user_id", decoded.userID);
+    const user = await checkRecordsExists("users", "userID", decoded.userID);
 console.log(user);
     if (!user) {
       return res.status(401).json({ error: "User not found" });

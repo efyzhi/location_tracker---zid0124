@@ -1,5 +1,6 @@
 const jwt  = require("jsonwebtoken")
 const userSchema  = require("../Schema/User");
+const Joi  = require("joi")
 
 const bcrypt = require("bcrypt");
 
@@ -10,6 +11,21 @@ const generateAcccessToken = (use) => {
 
 
 }
+
+const SignUpSchema = Joi.object({
+    email: Joi.string().email({minDomainSegments: 2, tlds: {
+        allow: ['com', 'net']
+    }}),
+    username: Joi.string().alphanum().min(3).max(15).required(),
+    password: Joi.string().min(8).required()
+})
+const loginSchema = Joi.object({
+    email: Joi.string().email({minDomainSegments: 2, tlds: {
+        allow: ['com', 'net']
+    }}),
+   
+    password: Joi.string().min(8).required()
+})
 const register = async (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -17,7 +33,13 @@ const register = async (req, res) => {
     if(!email || !password) {
         res.status(400).json("please supply the email or Password")
    
-   return; }
+   return; 
+}
+   const {error, value} = SignUpSchema.validate(req.body, {abortEarly: false});
+   if(error) {
+       res.status(400).json(error.details)
+       return;
+   }
 const salt = await bcrypt.genSalt(10);
 const hashedPassword = await bcrypt.hash(password, salt)
 const user = {
@@ -26,8 +48,6 @@ const user = {
     password: hashedPassword
 }
 try {
-    await createNewColumn(userSchema);
-
     const userAlreadyExists = await checkRecordsExists("users", "email", email);
     if(userAlreadyExists) {
         res.status(400).json("email must be unique");
@@ -52,6 +72,11 @@ const login = async(req, res)  => {
           .json({ error: "Email or Password fields cannot be empty!" });
         return;
       }
+      const {error, value} = loginSchema.validate(req.body, {abortEarly: false});
+   if(error) {
+       res.status(400).json(error.details)
+       return;
+   }
 try {
     const confirmUser = await checkRecordsExists("users", "email", email) ;
         if (!confirmUser) {
@@ -65,9 +90,9 @@ try {
         )
         if (passwordMatch) {
             res.status(200).json({
-                userId : confirmUser.userID,
+                userId : confirmUser.user_id,
                 email : confirmUser.email,
-                access_token: generateAcccessToken(confirmUser.userID) 
+                access_token: generateAcccessToken(confirmUser.user_id) 
             })
         }
 } catch(err)  {

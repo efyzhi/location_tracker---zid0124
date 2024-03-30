@@ -4,7 +4,7 @@ const locationSchema = require("../Schema/Location");
 const newLocation = async(req, res) => {
     const longitude = req.body.longitude;
     const latitude  = req.body.latitude;
-const userID = req.user.user_id
+const userID = req.user.userID
     if (!longitude|| !latitude ) {
         res.status(400).json("Invalid location co-ordinates");
 
@@ -14,6 +14,7 @@ const userID = req.user.user_id
         latitude, userID
     }
     try {
+        await createNewColumn(locationSchema);
 const addLocation = await insertRecord("location_history_db", locationDetails)
 console.log(addLocation);
 res.status(200).json("location update successful")

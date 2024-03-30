@@ -1,10 +1,10 @@
 const {createNewColumn, checkRecordsExists, insertRecord, FetchNotifRecord} = require('../utils/sqlSchemaFunction')
-
+const notifSchema = require("../Schema/Notification");
 
 
 const createNotification = async(req, res) => {
 
-    const userId  = req.user.user_id ;
+    const userId  = req.user.userID;
 
     if(!userId) {
         res.status(400).json("Error: Please try again later");
@@ -12,10 +12,11 @@ const createNotification = async(req, res) => {
     }
     const NewNotif = {
         description: req.body.description,
-        user_id : userId
+        userID : userId
     }
 
     try {
+        await createNewColumn(notifSchema);
         const addNotification = await insertRecord("user_notification", NewNotif)
 console.log(addNotification);
 res.status(200).json("New notification")
