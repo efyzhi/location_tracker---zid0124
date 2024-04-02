@@ -13,7 +13,9 @@ const Dashboard = () => {
         <h1>Dashboard</h1>
         <Link to="/">Dashboard</Link>
         <Link to="/login">Log in</Link>
-        <Link to="/signup">Sign up</Link>
+        <Link to="/signup">Sign out</Link>
+        <Link to=''>Notification</Link>
+        <button>Simulate Location change</button>
       </div>
       <div className="map-container">
         <Map />

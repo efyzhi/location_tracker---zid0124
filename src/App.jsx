@@ -5,10 +5,15 @@ import Dashboard from './components/Dashboard/Dashboard'
 import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom'
 import ForgetPassword from './components/Auth/ForgetPassword/ForgetPassword'
 import Verification from './components/Auth/Verification/Verification'
+import HomePage from './components/Page/HomePage'
 
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <HomePage />
+  },
+  {
+    path: '/dashboard',
     element: <Dashboard />,
   },
   {
